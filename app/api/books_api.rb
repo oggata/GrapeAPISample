@@ -23,11 +23,30 @@ class Books_API < Grape::API
     end
   end
 
+  resource "save_feed" do
+    desc "insert a feed"
+    params do
+      requires :user_id,   type:Integer, desc: "User ID"
+      requires :user_name, type:String,  desc: "User Name"
+      requires :icon_url,  type:String,  desc: "ICON URL"
+      requires :comment,   type:String,  desc: "Comment"
+    end
+    get do
+      Feeds.create(
+        :user_id=>params[:user_id],
+        :user_name=>params[:user_name],
+        :icon_url=>params[:icon_url],
+        :comment=>params[:comment]
+      )
+    end
+  end
+
   resource "feeds" do
     desc "get all feeds"
 #header 'Access-Control-Allow-Origin', '*'
     get do
-      Feeds.all
+      #Feeds.all
+      Feeds.limit(999).order("id DESC")
     end
     desc "get a feed"
     params do
