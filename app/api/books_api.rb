@@ -6,6 +6,7 @@ class Books_API < Grape::API
     header "Access-Control-Allow-Headers","*"
   end
 
+
  #obj = Books.create(:title => 'aaaaaa')
   desc "hello"
   get :hello do
@@ -102,7 +103,7 @@ class Books_API < Grape::API
     end
   end
 
-  resource "insert_users" do
+  resource "insert_user" do
     desc ""
     params do
       requires :name,     type:String, desc: ""
@@ -111,7 +112,7 @@ class Books_API < Grape::API
       requires :identification_id, type:Integer,  desc: ""
     end
     get do
-      Feeds.create(
+      Users.create(
         :name=>params[:name],
         :comment=>params[:comment],
         :icon_url=>params[:icon_url],
