@@ -11,10 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015081239) do
+ActiveRecord::Schema.define(version: 20141020101251) do
+
+  create_table "article_comments", force: true do |t|
+    t.integer  "article_id"
+    t.text     "title"
+    t.text     "detail"
+    t.integer  "user_id"
+    t.text     "name"
+    t.text     "icon_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "articles", force: true do |t|
+    t.text     "title"
+    t.text     "detail"
+    t.text     "tag"
+    t.text     "thumbnail_url"
+    t.text     "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "books", force: true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "communitie_comments", force: true do |t|
+    t.integer  "community_id"
+    t.text     "title"
+    t.text     "comment"
+    t.text     "name"
+    t.text     "icon_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "communities", force: true do |t|
+    t.text     "title"
+    t.text     "comment"
+    t.text     "tag"
+    t.text     "thumbnail_url"
+    t.text     "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "community_comments", force: true do |t|
+    t.integer  "community_id"
+    t.text     "title"
+    t.text     "comment"
+    t.integer  "user_id"
+    t.text     "name"
+    t.text     "icon_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

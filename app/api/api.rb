@@ -6,5 +6,8 @@ class API < Grape::API
   #header "Access-Control-Allow-Origin", "*"
 
   mount Books_API
+  mount Articles_API
+  mount Communities_API
+  mount CommunityComments_API
 end
 
